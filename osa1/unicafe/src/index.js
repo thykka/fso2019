@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const Feedback = ({ controls }) => {
+const Feedback = ({ feedback }) => {
   return (
     <section>
     <h1>Anna palautetta</h1>
     {
-      controls.map(({changeFn, change, label}) => (
+      feedback.map(({changeFn, change, label, name}) => (
         <Button
           handleClick={() => changeFn(change)}
-          key={label}
+          key={name}
           label={label}
           />
       ))
@@ -18,30 +18,48 @@ const Feedback = ({ controls }) => {
   );
 };
 
-const Statistics = ({ statistics }) => {
-  const { good, neutral, bad } = statistics;
-  const total = good + neutral + bad;
-  const average = (good - bad) / total;
-  const positive = (good / total);
+const Statistics = ({ feedback }) => {
+  const [ good, neutral, bad ] = feedback;
+
+  const header = (<h2>Statistiikka</h2>);
+  let statistics = (<p>Ei yhtään palautetta annettu</p>);
+
+  const total = good.value + neutral.value + bad.value;
+
+  if(total > 0) {
+    const average = (good.value - bad.value) / total;
+    const positive = (good.value / total);
+    statistics = (
+      <table>
+        <tbody>
+          <Statistic label={good.label} value={good.value} />
+          <Statistic label={neutral.label} value={neutral.value} />
+          <Statistic label={bad.label} value={bad.value} />
+          <Statistic label="Yhteensä" value={ total } />
+          <Statistic label="Keskiarvo" value={ Number.isNaN(average) ? '-' : average } />
+          <Statistic label="Positiivisia" value={ Number.isNaN(positive) ? '-' : Math.round(positive * 100) + '%' } />
+        </tbody>
+      </table>);
+  }
 
   return (
     <section>
-      <h2>Statistiikka</h2>
-      <p>Hyvä: { good }</p>
-      <p>Neutraali: { neutral }</p>
-      <p>Huono: { bad }</p>
-      <p>Yhteensä: { total }</p>
-      <p>Keskiarvo: {
-        Number.isNaN(average) ? '-' : average
-      }</p>
-      <p>Positiivisia: {
-        Number.isNaN(positive) ? '-' : Math.round(positive * 100)
-      }%</p>
+      {header}
+      {statistics}
     </section>
   );
 }
 
-const Button = ({label, handleClick}) => (
+const Statistic = ({ label, value }) => {
+  return (
+    <tr>
+      <td>{label}</td>
+      <td>{value}</td>
+    </tr>
+  );
+};
+
+const Button = ({ label, handleClick }) => (
   <button onClick={handleClick}>
     {label}
   </button>
@@ -54,16 +72,19 @@ const App = () => {
 
   const feedback = [
     {
+      name: 'good',
       value: good,
       label: 'Hyvä 😃',
       change: good + 1,
       changeFn: setGood
     }, {
+      name: 'neutral',
       value: neutral,
       label: 'Neutraali 😐',
       change: neutral + 1,
       changeFn: setNeutral
     }, {
+      name: 'bad',
       value: bad,
       label: 'Huono 😣',
       change: bad + 1,
@@ -71,14 +92,10 @@ const App = () => {
     },
   ];
 
-  const statistics = {
-    good, neutral, bad
-  };
-
   return (
     <div>
-      <Feedback controls={feedback} />
-      <Statistics statistics={statistics} />
+      <Feedback feedback={feedback} />
+      <Statistics feedback={feedback} />
     </div>
   )
 }
