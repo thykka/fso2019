@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="567px" preserveAspectRatio="none" style="width:689px;height:567px;" version="1.1" viewBox="0 0 689 567" width="689px" zoomAndPan="magnify"><defs><filter height="300%" id="f1kpa72fpdurkl" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="203" x="243.75" y="23.5352">0.5: Single-page Application</text><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="170" x2="170" y1="68.9766" y2="526.6348"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="646.5" x2="646.5" y1="68.9766" y2="526.6348"/><rect fill="#FEFECE" filter="url(#f1kpa72fpdurkl)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="54" x="141" y="33.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="148" y="54.0234">selain</text><rect fill="#FEFECE" filter="url(#f1kpa72fpdurkl)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="54" x="141" y="525.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="40" x="148" y="546.1699">selain</text><rect fill="#FEFECE" filter="url(#f1kpa72fpdurkl)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="67" x="611.5" y="33.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="618.5" y="54.0234">palvelin</text><rect fill="#FEFECE" filter="url(#f1kpa72fpdurkl)" height="30.4883" style="stroke: #A80036; stroke-width: 1.5;" width="67" x="611.5" y="525.6348"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="618.5" y="546.1699">palvelin</text><path d="M46,83.9766 L46,108.9766 L290,108.9766 L290,93.9766 L280,83.9766 L46,83.9766 " fill="#FBFB77" filter="url(#f1kpa72fpdurkl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M280,83.9766 L280,93.9766 L290,93.9766 L280,83.9766 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="223" x="52" y="101.5449">Käyttäjä navigoi SPA:n osoitteeseen</text><polygon fill="#A80036" points="635,135.5977,645,139.5977,635,143.5977,639,139.5977" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="170" x2="641" y1="139.5977" y2="139.5977"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="386" x="177" y="134.8555">HTTP GET https://fullstack-exampleapp.herokuapp.com/spa</text><polygon fill="#A80036" points="181,164.9082,171,168.9082,181,172.9082,177,168.9082" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="175" x2="646" y1="168.9082" y2="168.9082"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="78" x="187" y="164.166">&lt;HTML&gt;spa</text><path d="M26,181.9082 L26,221.9082 L309,221.9082 L309,191.9082 L299,181.9082 L26,181.9082 " fill="#FBFB77" filter="url(#f1kpa72fpdurkl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M299,181.9082 L299,191.9082 L309,191.9082 L299,181.9082 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="222" x="32" y="199.4766">Selain parsii HTML:n ja pyytää siinä</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="262" x="32" y="214.7871">määritellyt resurssitiedostot palvelimelta.</text><polygon fill="#A80036" points="635,248.8398,645,252.8398,635,256.8398,639,252.8398" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="170" x2="641" y1="252.8398" y2="252.8398"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="420" x="177" y="248.0977">HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css</text><polygon fill="#A80036" points="181,278.1504,171,282.1504,181,286.1504,177,282.1504" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="175" x2="646" y1="282.1504" y2="282.1504"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="99" x="187" y="277.4082">&lt;CSS&gt;main.css</text><polygon fill="#A80036" points="635,307.4609,645,311.4609,635,315.4609,639,311.4609" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="170" x2="641" y1="311.4609" y2="311.4609"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="401" x="177" y="306.7188">HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js</text><polygon fill="#A80036" points="181,336.7715,171,340.7715,181,344.7715,177,340.7715" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="175" x2="646" y1="340.7715" y2="340.7715"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="118" x="187" y="336.0293">&lt;JavaScript&gt;spa.js</text><path d="M8,353.7715 L8,393.7715 L329,393.7715 L329,363.7715 L319,353.7715 L8,353.7715 " fill="#FBFB77" filter="url(#f1kpa72fpdurkl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M319,353.7715 L319,363.7715 L329,363.7715 L319,353.7715 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="231" x="14" y="371.3398">Selain alkaa suorittamaan js-koodia,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="300" x="14" y="386.6504">joka pyytää päivitetyn JSON-datan palvelimelta.</text><polygon fill="#A80036" points="635,420.7031,645,424.7031,635,428.7031,639,424.7031" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="170" x2="641" y1="424.7031" y2="424.7031"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="422" x="177" y="419.9609">HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json</text><polygon fill="#A80036" points="181,450.0137,171,454.0137,181,458.0137,177,454.0137" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="175" x2="646" y1="454.0137" y2="454.0137"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="453" x="187" y="449.2715">[{"content":"HTML on helppoa","date":"2017-12-10T17:30:31.098Z"}, ...]</text><path d="M17,467.0137 L17,507.0137 L319,507.0137 L319,477.0137 L309,467.0137 L17,467.0137 " fill="#FBFB77" filter="url(#f1kpa72fpdurkl)" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M309,467.0137 L309,477.0137 L319,477.0137 L309,467.0137 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="281" x="23" y="484.582">selain suorittaa tapahtumankäsittelijän, joka</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="202" x="23" y="499.8926">renderöi muistiinpanot näytölle.</text><!--
+@startuml
+title 0.5: Single-page Application
+
+note over selain
+Käyttäjä navigoi SPA:n osoitteeseen
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+palvelin- ->selain: <HTML>spa
+
+note over selain
+Selain parsii HTML:n ja pyytää siinä
+määritellyt resurssitiedostot palvelimelta.
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin- ->selain: <CSS>main.css
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+palvelin- ->selain: <JavaScript>spa.js
+
+note over selain
+Selain alkaa suorittamaan js-koodia,
+joka pyytää päivitetyn JSON-datan palvelimelta.
+end note
+
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin- ->selain: [{"content":"HTML on helppoa","date":"2017-12-10T17:30:31.098Z"}, ...]
+
+note over selain
+selain suorittaa tapahtumankäsittelijän, joka
+renderöi muistiinpanot näytölle.
+end note
+
+
+@enduml
+
+PlantUML version 1.2019.03(Sun Mar 10 13:04:44 EET 2019)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 10.0.1+10
+Operating System: Mac OS X
+OS Version: 10.14.4
+Default Encoding: UTF-8
+Language: en
+Country: FI
+--></g></svg>

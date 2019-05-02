@@ -1,0 +1,19 @@
+title 0.6: Uusi muistiinpano (SPA)
+
+note over selain
+Käyttäjä klikkaa "Talleta" -nappia, johon liitetty
+JS-koodi tallentaa uuden muistiinpanon javascript-
+muuttujaan, tyhjentää kentän seuraavaa muistiinpanoa
+varten, piirtää muistiinpanolistan uudelleen ja lähettää
+lomakkeen tekstin ja nykyisen päivämäärän
+palvelimelle POST-kutsuna.
+end note
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note over palvelin
+Palvelin suorittaa koodia, joka lisää tietokantaan
+uuden muistiinpanon, ja palauttaa vastauksen JSON-objektina.
+end note
+
+palvelin-->selain: {"message":"note created"}
