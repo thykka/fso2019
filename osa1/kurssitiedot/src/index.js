@@ -1,45 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Header = (props) => {
-  return (
-    <h1>{ props.course }</h1>
-  );
-};
+const Header = (props) => (
+  <h1>{ props.course }</h1>
+);
 
 const Content = (props) => {
-  const parts = JSON.parse(props.parts);
-  return (
-    <>
-      <Part name={parts[0].name} exercises={parts[0].exercises} />
-      <Part name={parts[1].name} exercises={parts[1].exercises} />
-      <Part name={parts[2].name} exercises={parts[2].exercises} />
-    </>
-  );
+  return props.parts.map(part => (
+    <Part key={part.name} name={part.name} exercises={part.exercises}></Part>
+  ));
 }
 
-const Part = (props) => {
-  return (
-    <>
-      <p>
-        {props.name} {props.exercises}
-      </p>
-    </>
-  );
-};
-const Total = (props) => {
-  const parts = JSON.parse(props.parts);
-  return (
-    <>
-      <p>Yhteensä {
-          parts[0].exercises +
-          parts[1].exercises +
-          parts[2].exercises
-        } tehtävää
-      </p>
-    </>
-  );
-};
+const Part = (props) => (
+  <p>
+    {props.name} {props.exercises}
+  </p>
+);
+
+const Total = (props) => (
+  <p>Yhteensä {
+      props.parts.reduce((acc, part) => acc + part.exercises, 0)
+    } tehtävää
+  </p>
+);
 
 const App = () => {
   const course = 'Half Stack -sovelluskehitys';
@@ -59,8 +42,8 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content parts={JSON.stringify(parts)} />
-      <Total parts={JSON.stringify(parts)} />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   );
 }
