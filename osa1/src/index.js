@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom';
 
 const getOrdinal = (number = 0, _ = Math.abs(number) % 10) => (
   ['th', 'st', 'nd', 'rd'][_ % 10 <= 3 ? _ % 10 : 0]
-)
+);
+const capitalize = (text) => text[0].toUpperCase() + text.substr(1);
 
-const Hello = (props) => {
+const Hello = ({name, age}) => {
+  const bornYear = () => (new Date().getFullYear() - age);
+
   return (
-    <div>
+    <section>
       <p>
-        Hello, {props.name}!
-        You're on your {props.age + getOrdinal(props.age)} revolution around the sun.
+        Hello, { capitalize(name) }!
+      </p><p>
+        You { age > 0 ? 'were' : 'will be' } born in { bornYear() }.
+      </p><p>
+        You're now on your { age + getOrdinal(age) } revolution around the sun.
       </p>
-    </div>
+    </section>
   )
 }
 
