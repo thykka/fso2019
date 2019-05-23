@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import Persons from './services/persons';
 
 const App = () => {
   const [ persons, setPersons ] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(res => res.data)
-      .then(data => {
-        setPersons(data);
-      })
+    Persons.getList().then(data => setPersons(data));
   }, []);
 
   const [ filter, setFilter ] = useState('');
@@ -23,9 +18,9 @@ const App = () => {
     if(persons.map(p=>p.name).includes(name)) {
       alert(`${ name } on jo luettelossa!`);
     } else {
-      setPersons([...persons, {
-        name, number
-      }]);
+      Persons.create({ name, number })
+      .then(({name, number}) => setPersons([...persons, { name, number }]))
+      .catch(error => console.error(error));
     }
   };
 
@@ -53,7 +48,10 @@ const NewContact = ({ addPerson }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addPerson(newName, newNumber);
+    addPerson(
+      newName,
+      newNumber
+    );
     setNewName('');
     setNewNumber('');
   };

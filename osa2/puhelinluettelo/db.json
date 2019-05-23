@@ -19,6 +19,46 @@
       "name": "Lea Kutvonen",
       "number": "040-123456",
       "id": 4
+    },
+    {
+      "name": "Aku Ankka",
+      "number": "040123456",
+      "id": 5
+    },
+    {
+      "name": "Iines Ankka",
+      "number": "040123895",
+      "id": 6
+    },
+    {
+      "name": "Roope Ankka",
+      "number": "111-1111-111",
+      "id": 7
+    },
+    {
+      "name": "Mikki Hiiri",
+      "number": "0700-123123",
+      "id": 8
+    },
+    {
+      "name": "Mummo Ankka",
+      "number": "09-125928",
+      "id": 9
+    },
+    {
+      "name": "Hessu Hopo",
+      "number": "0205765",
+      "id": 10
+    },
+    {
+      "name": "Hannu Hanhi",
+      "number": "0800123123",
+      "id": 11
+    },
+    {
+      "name": "Minni Hiiri",
+      "number": "06047563",
+      "id": 12
     }
   ]
 }
