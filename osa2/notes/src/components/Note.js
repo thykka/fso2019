@@ -2,8 +2,8 @@ import React from 'react';
 
 const Note = ({ note, toggleImportance }) => {
   const label = note.important ?
-    '\u2191' : // arrow up
-    '\u2193';  // arrow down
+    '\u2193' :  // arrow down
+    '\u2191' ; // arrow up
 
   return (
     <li className={ ['note', note.important ? ' note--important': ''].join('') }>

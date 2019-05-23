@@ -4,7 +4,7 @@
       "id": 1,
       "content": "HTML on helppoa",
       "date": "2019-01-10T17:30:31.098Z",
-      "important": true
+      "important": false
     },
     {
       "id": 2,
@@ -19,15 +19,9 @@
       "important": false
     },
     {
-      "content": "Uusi muistiinpano",
-      "date": "2019-05-23T06:07:53.461Z",
-      "important": false,
-      "id": "4"
-    },
-    {
       "content": "Tässä muistiinpanossa on aika paljon tekstiä, ehkä voisi laajentaa UI:n toiminnallisuutta sen verran, ettei pitkiä muistiinpanoja näytetä kokonaan, paitsi sellaista klikatessa…",
       "date": "2019-05-23T07:34:50.110Z",
-      "important": false,
+      "important": true,
       "id": "Z8TbYyQ"
     },
     {
@@ -35,6 +29,12 @@
       "date": "2019-05-23T08:00:10.955Z",
       "important": true,
       "id": "Gn4B9jT"
+    },
+    {
+      "content": "Tehty: notifikaatiopalkki",
+      "date": "2019-05-23T10:57:04.026Z",
+      "important": false,
+      "id": "TlQeArr"
     }
   ]
 }

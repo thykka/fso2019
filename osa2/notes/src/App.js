@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import Note from './components/Note';
+import Notification from './components/Notification';
 import noteService from './services/notes';
 import './index.css';
 
+const Footer = () => {
+  const footerStyle = {
+    color: 'darkslategray',
+    backgroundColor: 'gainsboro',
+    textAlign: 'center',
+    position: 'absolute',
+    bottom: '0',
+    width: '100%'
+  };
+
+  return (
+    <footer
+      style={footerStyle}
+    >
+      <em>Notes &mdash; Crasman &copy; 2019</em>
+    </footer>
+  );
+}
+
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes);
-  const [newNote, setNewNote] = useState(
-    'Uusi muistiinpano'
-  );
+  const [newNote, setNewNote] = useState('');
   const [showAll, setShowAll] = useState(true);
+  const [notification, setNotification] = useState(null);
+  const clearNotification = () => setNotification(null);
 
   const hook = () => {
     noteService.getAll()
@@ -31,7 +51,11 @@ const App = (props) => {
         ))
       })
       .catch(error => {
-        alert(`Muistiinpanoa '${note.content}' ei löydy.\n\n${error}`);
+        setNotification({
+          message: `Muistiinpanoa '${note.content}' ei löydy.\n\n${error}`,
+          type: 'error'
+        });
+        setTimeout(clearNotification, 5000);
         setNotes(notes.filter(n => n.id !== id));
       })
   }
@@ -56,6 +80,11 @@ const App = (props) => {
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote));
         setNewNote('');
+        setNotification({
+          message: 'Muistiinpano lisätty!',
+          type: 'confirm'
+        });
+        setTimeout(clearNotification, 5000);
       })
 
   }
@@ -65,19 +94,25 @@ const App = (props) => {
   };
 
   return (
+    <>
     <section className="notes">
       <h1 className="notes__title">Muistiinpanot</h1>
-      <div>
+      <Notification
+        notification={notification}
+      />
+      <div className='notes__controls'>
+        <form onSubmit={addNote}>
+          <input value={newNote} placeholder='Uusi muistiinpano' onChange={ handleNoteChange } />
+          <button type="submit">+ Lisää muistiinpano</button>
+        </form>
         <button onClick={ () => setShowAll(!showAll) }>
           Näytä { showAll ? 'vain tärkeät' : 'kaikki' }
         </button>
       </div>
       <ul className="notes__list">{rows()}</ul>
-      <form onSubmit={addNote}>
-        <input value={newNote} onChange={handleNoteChange} />
-        <button type="submit">+ Lisää muistiinpano</button>
-      </form>
     </section>
+    <Footer />
+    </>
   );
 };
 

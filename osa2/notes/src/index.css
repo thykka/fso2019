@@ -1,3 +1,18 @@
+:root {
+  box-sizing: border-box;
+  --shadow: 0 .1em .5em -.1em #0002;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+html {
+  padding-bottom: 2rem;
+  position: relative;
+  min-height: 100vh;
+}
+
 body {
   font-family: sans-serif;
   line-height: 1.5;
@@ -14,13 +29,24 @@ button, input {
   padding: 0.25em .5em;
   margin: 0 .5em .25em 0;
 }
+
+button {
+  box-shadow: var(--shadow);
+}
+
+input:not([type='checkbox']):not([type='radio']):not([type='button']) {
+  box-shadow: inset var(--shadow);
+}
+
 button:focus,
 input:focus {
   outline: 1px dashed cadetblue;
 }
+
 button:focus {
   outline-offset: 1px;
 }
+
 input:focus {
   outline-offset: -3px;
 }
@@ -43,13 +69,17 @@ input:focus {
   list-style: none;
 }
 
+.note,
+.notification {
+  box-shadow: 0 .1em .5em -.1em #0002;
+  margin-bottom: 0.75em;
+  padding: 0.5em;
+}
+
 .note {
   background: lemonchiffon;
-  box-shadow: 0 .1em .5em -.1em #0002;
   display: flex;
   flex-flow: row nowrap;
-  padding: 0.5em;
-  margin-bottom: 0.75em;
 }
 
 .note--important {
@@ -62,12 +92,33 @@ input:focus {
 }
 
 .note__button {
-  background: cadetblue;
-  border: 1px solid gold;
+  background: gold;
+  border: 1px solid;
   border-radius: 50%;
-  color: white;
+  color: cadetblue;
   font-size: inherit;
   flex: 0 0 2em;
   height: 2em;
   margin: 0;
+}
+
+.note--important .note__button {
+  background: lemonchiffon;
+}
+
+.notification {
+  background-clip: content-box;
+  border: 2px dashed;
+  display: flex;
+  justify-content: center;
+}
+
+.notification--error {
+  background-color: salmon;
+  border-color: salmon;
+}
+
+.notification--confirm {
+  background-color: yellowgreen;
+  border-color: yellowgreen;
 }
