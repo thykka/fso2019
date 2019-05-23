@@ -2,48 +2,23 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "040-123456",
+      "number": "09 819 99125",
       "id": 1
     },
     {
       "name": "Martti Tienari",
-      "number": "040-123456",
+      "number": "0800 177 122",
       "id": 2
     },
     {
       "name": "Arto Järvinen",
-      "number": "040-123456",
+      "number": "0600 123123",
       "id": 3
     },
     {
       "name": "Lea Kutvonen",
       "number": "040-123456",
       "id": 4
-    },
-    {
-      "name": "Hannu Hanhi",
-      "number": "88449922",
-      "id": 7
-    },
-    {
-      "name": "Mummo Ankka",
-      "number": "09 819 1234",
-      "id": 9
-    },
-    {
-      "name": "Hessu Hopo",
-      "number": "0205765",
-      "id": 10
-    },
-    {
-      "name": "Aku Ankka",
-      "number": "0993458",
-      "id": 12
-    },
-    {
-      "name": "Roope Ankka",
-      "number": "040 1111",
-      "id": 13
     }
   ]
 }

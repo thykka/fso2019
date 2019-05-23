@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Persons from './services/persons';
+import Notification, { NotificationDuration } from './components/Notification';
 
 const App = () => {
   const [ persons, setPersons ] = useState([]);
+  const [ notification, setNotification ] = useState();
+  const clearNotification = () => setNotification(null);
 
   useEffect(() => {
     Persons.getList().then(data => setPersons(data));
@@ -10,46 +13,57 @@ const App = () => {
 
   const [ filter, setFilter ] = useState('');
   const filteredContacts = persons.filter(
-    person => person.name.toLowerCase()
-      .indexOf(filter.toLowerCase()) >= 0
+    person =>
+      person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0 ||
+      person.number.indexOf(filter) >= 0
   );
+
+  const notify = (notification) => {
+    setNotification(notification);
+    setTimeout(clearNotification, NotificationDuration[notification.type]);
+  }
 
   const addPerson = (name, number) => {
     const existingPerson = persons.find(person=>
       person.name === name || person.number === number
     );
     if(existingPerson && confirm(`${ name } on jo luettelossa, korvataanko tiedot?`)) {
-      Persons.edit(existingPerson.id, { name, number })
-        .then(editedPerson => setPersons(
-          persons.map(person =>
-            person.id === existingPerson.id ? editedPerson : person
-          )
-        ))
-        .catch(error => console.error(error));
+      Persons.edit(existingPerson.id, { name, number }).then(editedPerson => {
+        setPersons(persons.map(person => person.id === existingPerson.id ? editedPerson : person ));
+        notify({ message: 'Yhteystieto päivitetty: ' + editedPerson.name, type: 'confirm' });
+      })
+        .catch(error => notify({ message: `Tietojen päivitys epäonnistui`, type: 'error', error }) );
     } else {
-      Persons.create({ name, number })
-        .then(newPerson => setPersons([...persons, {
-          name: newPerson.name,
-          number: newPerson.number,
-          id: newPerson.id
-        }]))
-        .catch(error => console.error(error));
+      Persons.create({ name, number }).then(newPerson => {
+        setPersons([...persons, newPerson]);
+        notify({ message: 'Henkilö lisätty: ' + newPerson.name, type: 'confirm' });
+      })
+        .catch(error => notify({ message: `Henkilön lisäys epäonnistui`, type: 'error', error }) );
     }
   };
 
   const removePerson = (id) => {
-    if(confirm('Poistetaan ' + persons.find(person => person.id === id).name + '?')) {
-      Persons.remove(id).then(() => {
-        setPersons(persons.filter(person => person.id !== id));
-      });
+    const removePerson = persons.find(person => person.id === id);
+
+    if(
+      removePerson &&
+      confirm('Poistetaan henkilö ' + removePerson.name + '?')
+    ) {
+      Persons.remove(id)
+        .then(() => {
+          setPersons(persons.filter(person => person.id !== id));
+          notify({ message: 'Henkilö poistettu: ' + removePerson.name, type: 'confirm' });
+        })
+          .catch(error => notify({ message: `Henkilön poisto epäonnistui`, type: 'error', error }) );
     }
   }
 
   return (
-    <section>
+    <section className='contacts'>
       <h1>Puhelinluettelo</h1>
+      <Notification notification={notification} />
       <NewContact addPerson={ addPerson } />
-      <h2>Numerot</h2>
+      <h3>Numerot</h3>
       <Filter filter={ filter } setFilter={ setFilter } />
       <ContactList persons={ filteredContacts } removePerson={ removePerson } />
     </section>
@@ -78,11 +92,17 @@ const NewContact = ({ addPerson }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Lisää yhteystieto</h2>
-      <div>nimi:   <input value={newName}   onChange={handleNameChange} /></div>
-      <div>numero: <input value={newNumber} onChange={handleNumberChange} /></div>
-      <div><button type="submit">Lisää</button></div>
+    <form className='contacts__new' onSubmit={handleSubmit}>
+      <h3>Lisää yhteystieto</h3>
+      <div className='form-control'>
+        Nimi:<br /><input value={newName}   onChange={handleNameChange} />
+      </div>
+      <div className='form-control'>
+        Numero:<br /><input value={newNumber} onChange={handleNumberChange} />
+      </div>
+      <div className='form-control'>
+        <button type="submit">Lisää</button>
+      </div>
   </form>
   )
 };
@@ -93,7 +113,7 @@ const Filter = ({ filter, setFilter }) => {
   };
 
   return <div>
-    Rajaa: <input value={ filter } onChange={ handleChange } />
+    Rajaa:<br /><input value={ filter } onChange={ handleChange } />
   </div>;
 };
 
@@ -109,7 +129,7 @@ const ContactList = ({ persons, removePerson }) => <ul>
   }
 </ul>;
 
-const ContactItem = ({ person, removePerson }) => <li>
+const ContactItem = ({ person, removePerson }) => <li data-id={ person.id }>
   <button onClick={ removePerson }>X</button>
   { person.name } — { person.number }
 </li>;
