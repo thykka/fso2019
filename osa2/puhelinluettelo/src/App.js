@@ -24,13 +24,21 @@ const App = () => {
     }
   };
 
+  const removePerson = (id) => {
+    if(confirm('Poistetaan ' + persons.find(person => person.id === id).name + '?')) {
+      Persons.remove(id).then(() => {
+        setPersons(persons.filter(person => person.id !== id));
+      });
+    }
+  }
+
   return (
     <section>
       <h1>Puhelinluettelo</h1>
       <NewContact addPerson={ addPerson } />
       <h2>Numerot</h2>
       <Filter filter={ filter } setFilter={ setFilter } />
-      <ContactList persons={ filteredContacts } />
+      <ContactList persons={ filteredContacts } removePerson={ removePerson } />
     </section>
   );
 };
@@ -76,15 +84,20 @@ const Filter = ({ filter, setFilter }) => {
   </div>;
 };
 
-const ContactList = ({ persons }) => <ul>
+const ContactList = ({ persons, removePerson }) => <ul>
   {
     persons.map(person =>
-    <ContactItem key={ person.name } person={person} />
+    <ContactItem
+      key={ person.name }
+      person={person}
+      removePerson={ () => removePerson(person.id) }
+    />
     )
   }
 </ul>;
 
-const ContactItem = ({ person }) => <li>
+const ContactItem = ({ person, removePerson }) => <li>
+  <button onClick={ removePerson }>X</button>
   { person.name } — { person.number }
 </li>;
 

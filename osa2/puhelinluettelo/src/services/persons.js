@@ -11,6 +11,11 @@ const create = newObject => {
   return request.then(response => response.data);
 };
 
+const remove = (id) => {
+  const request = axios.delete(`${API_URL}/${id}`);
+  return request.then(response => response.data);
+}
+
 export default {
-  getList, create
+  getList, create, remove
 };
