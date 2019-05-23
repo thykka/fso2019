@@ -1,5 +1,73 @@
 body {
+  font-family: sans-serif;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+}
+
+button, input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: cadetblue;
+  appearance: none;
+  font: inherit;
+  padding: 0.25em .5em;
+  margin: 0 .5em .25em 0;
+}
+button:focus,
+input:focus {
+  outline: 1px dashed cadetblue;
+}
+button:focus {
+  outline-offset: 1px;
+}
+input:focus {
+  outline-offset: -3px;
+}
+
+.notes {
+  margin: 0 auto;
+  max-width: 30em;
+}
+
+.notes__title {
+  font-weight: 300;
+}
+
+.notes__title {
+  font-size: 1.333em;
+}
+
+.notes__list {
+  padding: 0;
+  list-style: none;
+}
+
+.note {
+  background: lemonchiffon;
+  box-shadow: 0 .1em .5em -.1em #0002;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0.5em;
+  margin-bottom: 0.75em;
+}
+
+.note--important {
+  background: gold;
+}
+
+.note__content {
+  flex: 1 1 auto;
+  margin: 0.25em 0.25em .5em 0.25em;
+}
+
+.note__button {
+  background: cadetblue;
+  border: 1px solid gold;
+  border-radius: 50%;
+  color: white;
+  font-size: inherit;
+  flex: 0 0 2em;
+  height: 2em;
+  margin: 0;
 }

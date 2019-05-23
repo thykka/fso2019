@@ -16,7 +16,25 @@
       "id": 3,
       "content": "HTTP-protokollan tärkeimmät metodit ovat GET ja POST",
       "date": "2019-01-10T19:20:14.298Z",
-      "important": true
+      "important": false
+    },
+    {
+      "content": "Uusi muistiinpano",
+      "date": "2019-05-23T06:07:53.461Z",
+      "important": false,
+      "id": "4"
+    },
+    {
+      "content": "Tässä muistiinpanossa on aika paljon tekstiä, ehkä voisi laajentaa UI:n toiminnallisuutta sen verran, ettei pitkiä muistiinpanoja näytetä kokonaan, paitsi sellaista klikatessa…",
+      "date": "2019-05-23T07:34:50.110Z",
+      "important": false,
+      "id": "Z8TbYyQ"
+    },
+    {
+      "content": "todo: muistiinpanojen poisto",
+      "date": "2019-05-23T08:00:10.955Z",
+      "important": true,
+      "id": "Gn4B9jT"
     }
   ]
 }

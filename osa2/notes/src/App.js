@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Note from './components/Note';
+import noteService from './services/notes';
+import './index.css';
 
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes);
@@ -10,24 +11,37 @@ const App = (props) => {
   const [showAll, setShowAll] = useState(true);
 
   const hook = () => {
-    console.log('effect');
-    axios
-      .get('http://localhost:3001/notes')
-      .then(res => res.data)
-      .then(data => {
-        setNotes(data)
-      })
+    noteService.getAll()
+      .then(initialNotes => setNotes(initialNotes));
   };
 
   useEffect(hook, []);
 
-  console.log('render', notes.length, 'notes');
-
   const notesFiltered = showAll ?
     notes : notes.filter(note => note.important);
 
+  const toggleImportanceOf = id => {
+    const note = notes.find(note => note.id === id);
+    const changedNote = { ...note, important: !note.important }
+
+    noteService.update(id, changedNote)
+      .then(returnedNote => {
+        setNotes(notes.map(note =>
+          note.id !== id ? note : returnedNote
+        ))
+      })
+      .catch(error => {
+        alert(`Muistiinpanoa '${note.content}' ei löydy.\n\n${error}`);
+        setNotes(notes.filter(n => n.id !== id));
+      })
+  }
+
   const rows = () => notesFiltered.map(note =>
-    <Note key={note.id} note={note} />
+    <Note
+      key={note.id}
+      note={note}
+      toggleImportance={() => toggleImportanceOf(note.id)}
+    />
   );
 
   const addNote = (event) => {
@@ -36,11 +50,14 @@ const App = (props) => {
       content: newNote,
       date: new Date().toISOString(),
       important: false,
-      id: (notes.length + 1).toString(16)
     }
 
-    setNotes(notes.concat(noteObject));
-    setNewNote('');
+    noteService.create(noteObject)
+      .then(returnedNote => {
+        setNotes(notes.concat(returnedNote));
+        setNewNote('');
+      })
+
   }
 
   const handleNoteChange = (event) => {
@@ -48,14 +65,14 @@ const App = (props) => {
   };
 
   return (
-    <section>
-      <h1>Muistiinpanot</h1>
+    <section className="notes">
+      <h1 className="notes__title">Muistiinpanot</h1>
       <div>
         <button onClick={ () => setShowAll(!showAll) }>
           Näytä { showAll ? 'vain tärkeät' : 'kaikki' }
         </button>
       </div>
-      <ul>{rows()}</ul>
+      <ul className="notes__list">{rows()}</ul>
       <form onSubmit={addNote}>
         <input value={newNote} onChange={handleNoteChange} />
         <button type="submit">+ Lisää muistiinpano</button>
