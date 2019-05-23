@@ -21,13 +21,13 @@
       "id": 4
     },
     {
-      "name": "Roope Ankka",
-      "number": "111-1111-111",
+      "name": "Hannu Hanhi",
+      "number": "88449922",
       "id": 7
     },
     {
       "name": "Mummo Ankka",
-      "number": "09-125928",
+      "number": "09 819 1234",
       "id": 9
     },
     {
@@ -36,14 +36,14 @@
       "id": 10
     },
     {
-      "name": "Hannu Hanhi",
-      "number": "0800123123",
-      "id": 11
-    },
-    {
       "name": "Aku Ankka",
       "number": "0993458",
       "id": 12
+    },
+    {
+      "name": "Roope Ankka",
+      "number": "040 1111",
+      "id": 13
     }
   ]
 }

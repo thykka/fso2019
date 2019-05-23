@@ -15,12 +15,25 @@ const App = () => {
   );
 
   const addPerson = (name, number) => {
-    if(persons.map(p=>p.name).includes(name)) {
-      alert(`${ name } on jo luettelossa!`);
+    const existingPerson = persons.find(person=>
+      person.name === name || person.number === number
+    );
+    if(existingPerson && confirm(`${ name } on jo luettelossa, korvataanko tiedot?`)) {
+      Persons.edit(existingPerson.id, { name, number })
+        .then(editedPerson => setPersons(
+          persons.map(person =>
+            person.id === existingPerson.id ? editedPerson : person
+          )
+        ))
+        .catch(error => console.error(error));
     } else {
       Persons.create({ name, number })
-      .then(({name, number}) => setPersons([...persons, { name, number }]))
-      .catch(error => console.error(error));
+        .then(newPerson => setPersons([...persons, {
+          name: newPerson.name,
+          number: newPerson.number,
+          id: newPerson.id
+        }]))
+        .catch(error => console.error(error));
     }
   };
 
@@ -88,8 +101,8 @@ const ContactList = ({ persons, removePerson }) => <ul>
   {
     persons.map(person =>
     <ContactItem
-      key={ person.name }
-      person={person}
+      key={ person.id }
+      person={ person }
       removePerson={ () => removePerson(person.id) }
     />
     )
