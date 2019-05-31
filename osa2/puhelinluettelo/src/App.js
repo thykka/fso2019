@@ -27,7 +27,7 @@ const App = () => {
     const existingPerson = persons.find(person=>
       person.name === name || person.number === number
     );
-    if(existingPerson && confirm(`${ name } on jo luettelossa, korvataanko tiedot?`)) {
+    if(existingPerson && window.confirm(`${ name } on jo luettelossa, korvataanko tiedot?`)) {
       Persons.edit(existingPerson.id, { name, number }).then(editedPerson => {
         setPersons(persons.map(person => person.id === existingPerson.id ? editedPerson : person ));
         notify({ message: 'Yhteystieto päivitetty: ' + editedPerson.name, type: 'confirm' });
@@ -47,7 +47,7 @@ const App = () => {
 
     if(
       removePerson &&
-      confirm('Poistetaan henkilö ' + removePerson.name + '?')
+      window.confirm('Poistetaan henkilö ' + removePerson.name + '?')
     ) {
       Persons.remove(id)
         .then(() => {
