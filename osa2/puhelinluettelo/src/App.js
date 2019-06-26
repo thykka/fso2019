@@ -23,22 +23,35 @@ const App = () => {
     setTimeout(clearNotification, NotificationDuration[notification.type]);
   }
 
+  const errorHandler = (message) => {
+    return (reason) => {
+      const error = (
+        typeof reason.response !== 'undefined' &&
+        typeof reason.response.data !== 'undefined' &&
+        typeof reason.response.data.error === 'string'
+      ) ? reason.response.data.error : JSON.stringify(reason);
+      notify({ message, type: 'error', error });
+    };
+  }
+
   const addPerson = (name, number) => {
     const existingPerson = persons.find(person=>
       person.name === name || person.number === number
     );
     if(existingPerson && window.confirm(`${ name } on jo luettelossa, korvataanko tiedot?`)) {
-      Persons.edit(existingPerson.id, { name, number }).then(editedPerson => {
-        setPersons(persons.map(person => person.id === existingPerson.id ? editedPerson : person ));
-        notify({ message: 'Yhteystieto päivitetty: ' + editedPerson.name, type: 'confirm' });
-      })
-        .catch(error => notify({ message: `Tietojen päivitys epäonnistui`, type: 'error', error }) );
+      Persons.edit(existingPerson.id, { name, number })
+        .then(editedPerson => {
+          setPersons(persons.map(person => person.id === existingPerson.id ? editedPerson : person ));
+          notify({ message: 'Yhteystieto päivitetty: ' + editedPerson.name, type: 'confirm' });
+        })
+        .catch(errorHandler('Henkilön päivitys epäonnistui'));
     } else {
-      Persons.create({ name, number }).then(newPerson => {
-        setPersons([...persons, newPerson]);
-        notify({ message: 'Henkilö lisätty: ' + newPerson.name, type: 'confirm' });
-      })
-        .catch(error => notify({ message: `Henkilön lisäys epäonnistui`, type: 'error', error }) );
+      Persons.create({ name, number })
+        .then(newPerson => {
+          setPersons([...persons, newPerson]);
+          notify({ message: 'Henkilö lisätty: ' + newPerson.name, type: 'confirm' });
+        })
+        .catch(errorHandler('Henkilön lisäys epäonnistui'));
     }
   };
 
@@ -54,7 +67,7 @@ const App = () => {
           setPersons(persons.filter(person => person.id !== id));
           notify({ message: 'Henkilö poistettu: ' + removePerson.name, type: 'confirm' });
         })
-          .catch(error => notify({ message: `Henkilön poisto epäonnistui`, type: 'error', error }) );
+        .catch(errorHandler('Henkilön poisto epäonnistui'));
     }
   }
 
